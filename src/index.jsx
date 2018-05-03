@@ -60,9 +60,16 @@ class PrisKalkylator extends React.Component {
       return module.value;
     });
 
-    let modulesCost = Math.pow(1.4, selectedModules.length - 1);
+    
+    if (selectedModules.length > 0) {
+      let modulesCost = Math.pow(1.4, selectedModules.length - 1);
+      return Math.floor((this.userCost + this.fastighetCost) * modulesCost);
+    }else{
+      return 0;
+    }
 
-    return Math.floor((this.userCost + this.fastighetCost) * modulesCost);
+    
+  
   }
 
   render() {
@@ -108,4 +115,4 @@ class PrisKalkylator extends React.Component {
   }
 }
 
-ReactDOM.render(<PrisKalkylator />, document.getElementById('test'));
+ReactDOM.render(<PrisKalkylator />, document.getElementById('app'));
